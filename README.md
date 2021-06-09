@@ -1,4 +1,4 @@
-# dycd
+# dcyd
 A decision making app.
 
 
