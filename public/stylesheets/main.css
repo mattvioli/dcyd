@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(190, 190, 190);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.container {
+  width: 80vw;
+  height: 100%;
+  background-color: rgb(200, 200, 200);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border-bottom: 2px solid rgb(72, 72, 72);
+}
+
+.single_post {
+  background-color: rgb(240, 240, 240);
+  border: 2px solid rgb(72, 72, 72);
+}
