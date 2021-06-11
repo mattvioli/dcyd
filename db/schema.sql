@@ -8,6 +8,6 @@ CREATE TABLE users (
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY, 
   title TEXT, 
-  main_text TEXT, 
-  user_id TEXT
+  main_text TEXT,
+  user_id TEXT,
 );

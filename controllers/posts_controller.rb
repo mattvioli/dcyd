@@ -16,8 +16,8 @@ post '/create_post' do
   redirect '/posts'
 end
 
-delete '/posts/:id' do |id|
+delete '/:id' do |id|
   delete_post(id)
-  
+
   redirect '/posts'
 end
