@@ -4,3 +4,10 @@ CREATE TABLE users (
   email TEXT, 
   password_digest TEXT
 );
+
+CREATE TABLE posts (
+  id SERIAL PRIMARY KEY, 
+  title TEXT, 
+  main_text TEXT, 
+  user_id TEXT
+);
