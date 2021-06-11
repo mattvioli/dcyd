@@ -16,8 +16,9 @@
         <form action="/sessions" method="POST">
           <input type="hidden" name="_method" value="DELETE" />
           <input type="submit" value="Log Out" />
-          <a href='/posts'> View posts </a>
         </form>
+        <a href='/posts'>View posts</a>
+        <a href='/create'>Create post</a>
       <% else %>
         <a href="/login">Log in</a>
         <a href="/sign_up">Sign up</a>

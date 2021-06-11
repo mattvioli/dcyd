@@ -1,12 +1,14 @@
 <section class="posts">
 <%posts.each do |post| %>
+<section class="single_post">
   <h2><%=post['title']%></h2>
-  <h3>By Matt </h3>
+  <h3>By <%=post['user_id']%> </h3>
   <div class="post-text"><%=post['main_text']%></div>
   <%# <div class="replies"><button>yes</button><button>no</button></div>
   <div class="answers">
     <div class="answer">Yes X 2</div>
     <div class="answer">No X 1</div>
   </div> %>
+  </div>
   <%end%>
 </section>
