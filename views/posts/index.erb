@@ -1,23 +1,25 @@
 <section class="posts">
 <%posts.each do |post| %>
-<section class="single_post">
-  <h2><%=post['title']%></h2>
-  <h3>By <%=post['user_id']%> </h3>
-  <div class="post-text"><%=post['main_text']%></div>
-  <%if session["user_id"] == post["user_id"]%>
-    <div class="post-delete">
-      <form action="/<%=post["id"]%>" method="POST">
-      <input type="hidden" name="_method" value="DELETE" />
-      <input type="submit" value="Delete" />
-      </form>
-    </div>
-  <%end%>
-  <%# <div class="replies"><button>yes</button><button>no</button></div>
-  <div class="answers">
-    <div class="answer">Yes X 2</div>
-    <div class="answer">No X 1</div>
-  </div> %>
-  </div>
-  </section>
+    <%if post['active']%>
+    <section class="single_post">
+        <h2><%=post['title']%></h2>
+        <h3>By <%=post['user_id']%> </h3>
+        <div class="post-text"><%=post['main_text']%></div>
+        <%if session["user_id"] == post["user_id"]%>
+          <div class="post-delete">
+            <form action="/<%=post["id"]%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete" />
+            </form>
+          <form action="/deactivate/<%=post["id"]%>" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Deactivate">
+          </form>
+          </div>
+        <%end%>
+        <div class="replies">
+        </div>
+    </section>
+    <%end%>
   <%end%>
 </section>

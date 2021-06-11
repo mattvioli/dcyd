@@ -16,6 +16,12 @@ post '/create_post' do
   redirect '/posts'
 end
 
+put '/deactivate/:id' do |id|
+  deactivate_post(id)
+
+  redirect "/posts"
+end
+
 delete '/:id' do |id|
   delete_post(id)
 

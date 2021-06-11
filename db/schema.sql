@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS users, posts;
+
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY, 
   user_name TEXT, 
@@ -9,5 +12,6 @@ CREATE TABLE posts (
   id SERIAL PRIMARY KEY, 
   title TEXT, 
   main_text TEXT,
-  user_id TEXT,
+  active BOOLEAN,
+  user_id TEXT
 );
