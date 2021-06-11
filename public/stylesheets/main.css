@@ -22,4 +22,5 @@ header {
 
 .single_post {
   background-color: rgb(240, 240, 240);
+  border: 2px solid rgb(72, 72, 72);
 }

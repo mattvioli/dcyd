@@ -4,6 +4,14 @@
   <h2><%=post['title']%></h2>
   <h3>By <%=post['user_id']%> </h3>
   <div class="post-text"><%=post['main_text']%></div>
+  <%if session["user_id"] == post["user_id"]%>
+    <div class="post-delete">
+      <form action="/post/<%=post["id"]%>" method="POST">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete" />
+      </form>
+    </div>
+  <%end%>
   <%# <div class="replies"><button>yes</button><button>no</button></div>
   <div class="answers">
     <div class="answer">Yes X 2</div>
