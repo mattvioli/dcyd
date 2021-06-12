@@ -1,6 +1,7 @@
 get '/posts' do
-  results = posts_data()
-  erb :'posts/index', locals: { posts: results }
+  post_results = posts_data()
+  reply_results = reply_data()
+  erb :'posts/index', locals: { posts: post_results, replies: reply_results }
 end
 
 get '/create' do

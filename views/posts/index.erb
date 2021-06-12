@@ -1,3 +1,4 @@
+<% if is_logged_in?%>
 <section class="posts">
 <%posts.each do |post| %>
 <section class="single_post">
@@ -13,13 +14,23 @@
     </div>
   <%end%>
   <div class="replies">
-    <form action='/reply' method="POST">
+    <form action="/reply/<%=post["id"]%>" method="POST">
       <input type="text" name="reply" placeholder="What's your decision?">
-      <input type="sumbit" value="reply">
+      <input type="submit" value="reply" />
     </form>
   </div>
-  <div class="answers"> </div>
+  <div class="answers">
+    <%replies.each do |reply|%>
+      <%if reply["post_id"] == post["id"]%>
+        <p><%=reply["reply"]%> by <%=reply["user_name"]%>
+      <%end%>
+    <%end%>
+  </div>
   </div>
   </section>
-  <%end%>
+  <%end %>
 </section>
+    <% else %>
+      <p>Please login to access this page</p>
+      <a href="/login">Log in</a>
+    <% end %>
