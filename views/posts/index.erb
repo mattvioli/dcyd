@@ -20,9 +20,10 @@
     </form>
   </div>
   <div class="answers">
+    <% counts = replies.each_with_object(Hash.new(0)) { |h1, h2| h2[h1["reply"]] += 1 }%>
     <%replies.each do |reply|%>
       <%if reply["post_id"] == post["id"]%>
-        <p><%=reply["reply"]%> by <%=reply["user_name"]%>
+        <p><%=reply["reply"]%> * <%=counts[reply["reply"]]%> by <%=reply["user_name"]%>
       <%end%>
     <%end%>
   </div>

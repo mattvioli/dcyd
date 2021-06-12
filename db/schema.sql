@@ -10,7 +10,7 @@ CREATE TABLE posts (
   title TEXT, 
   main_text TEXT,
   active BOOLEAN,
-  user_id TEXT,
+  user_id INTEGER,
 );
 
 CREATE TABLE answers (
