@@ -9,14 +9,14 @@
           <div class="post-delete">
             <form action="/<%=post["id"]%>" method="POST">
             <input type="hidden" name="_method" value="DELETE" />
-            <input type="submit" value="Delete" />
+            <input id="input_button" type="submit" value="Delete" />
             </form>
           </div>
         <%end%>
       <div class="replies">
         <form action="/reply/<%=post["id"]%>" method="POST">
-          <input type="text" name="reply" placeholder="What's your decision?">
-          <input type="submit" value="reply" />
+          <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
+          <input id="input_button" type="submit" value="reply" />
         </form>
       </div>
       <%end%>
@@ -32,13 +32,13 @@
                 <%if counts[reply["reply"]] > 1%>
                   <div class="reply">
                     <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
-                    <p><%=reply["reply"]%></p>
+                    <div><%=reply["reply"]%></div>
                     <%posted[reply["reply"]] = true%>
                   </div>
                 <%else%>
                   <div class="reply">
                     <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
-                    <p><%=reply["reply"]%>
+                    <div><%=reply["reply"]%></div>
                     <%posted[reply["reply"]] = true%>
                   </div>
                 <%end%>

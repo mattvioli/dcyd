@@ -1,27 +1,26 @@
-<h2>Sign up</h2>
-<div class="form">
-  <form action="/sign_up" method="POST">
-    <div>
-      <label for="username">
-        Username:
+<section class="access">
+  <h2>Sign up</h2>
+  <div class="form">
+    <form action="/sign_up" method="POST">
+      <div>
+        <label for="username">
+          <input type="text" name="username" placeholder="Enter Username"/>
+        </label>
+      </div>
+
+      <div>
+      <label for="email">
+        <input type="text" name="email" placeholder="Enter email"/>
       </label>
-      <input type="text" name="username" placeholder="Enter Username"/>
-    </div>
+      </div>
 
-    <div>
-    <label for="email">
-      Email:
-    </label>
-    <input type="text" name="email" placeholder="Enter email"/>
-    </div>
+      <div>
+      <label for="password">
+        <input type="password" name="password" placeholder="Enter password"/>
+      </label>
+      </div>
 
-    <div>
-    <label for="password">
-      Password:
-    </label>
-    <input type="password" name="password" placeholder="Enter password"/>
-    </div>
-
-    <input type="submit" value="Sign up!" />
-  </form>
-</div>
+      <input id="access_button" type="submit" value="Sign up!" />
+    </form>
+  </div>
+</section>
