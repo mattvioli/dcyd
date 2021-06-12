@@ -16,10 +16,10 @@ require_relative 'controllers/answers_controller'
 
 
 get '/' do
-  erb :index
+  post_results = posts_data()
+  reply_results = reply_data()
+  erb :'posts/index', locals: { posts: post_results, replies: reply_results }
 end
-
-
 
 
 

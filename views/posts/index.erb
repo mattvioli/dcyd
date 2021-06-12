@@ -1,25 +1,27 @@
-<% if is_logged_in?%>
 <section class="posts">
   <%posts.each do |post| %>
     <section class="single_post">
       <h2><%=post['title']%></h2>
-      <h3>By <%=post['user_id']%> </h3>
+      <h3>Posted by <%=post['user_id']%> </h3>
       <div class="post-text"><%=post['main_text']%></div>
-      <%if session["user_id"] == post["user_id"]%>
-        <div class="post-delete">
-          <form action="/<%=post["id"]%>" method="POST">
-          <input type="hidden" name="_method" value="DELETE" />
-          <input type="submit" value="Delete" />
-          </form>
-        </div>
-      <%end%>
+      <% if is_logged_in?%>
+        <%if session["user_id"] == post["user_id"]%>
+          <div class="post-delete">
+            <form action="/<%=post["id"]%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input id="input_button" type="submit" value="Delete" />
+            </form>
+          </div>
+        <%end%>
       <div class="replies">
         <form action="/reply/<%=post["id"]%>" method="POST">
-          <input type="text" name="reply" placeholder="What's your decision?">
-          <input type="submit" value="reply" />
+          <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
+          <input id="input_button" type="submit" value="reply" />
         </form>
       </div>
+      <%end%>
       <div class="answers">
+      <h3>Replies</h3>
         <% counts = replies.each_with_object(Hash.new(0)) { |h1, h2| h2[h1["reply"]] += 1 }%>
         <% posted = {}%>
         <%replies.each do |reply|%>
@@ -28,21 +30,22 @@
               <%nil%>
               <%else%>
                 <%if counts[reply["reply"]] > 1%>
-                  <p><%=reply["reply"]%> * <%=counts[reply["reply"]]%> by multiple</p>
-                  <%posted[reply["reply"]] = true%>
+                  <div class="reply">
+                    <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
+                    <div><%=reply["reply"]%></div>
+                    <%posted[reply["reply"]] = true%>
+                  </div>
                 <%else%>
-                  <p><%=reply["reply"]%> by <%=reply["user_name"]%>
-                  <%posted[reply["reply"]] = true%>
+                  <div class="reply">
+                    <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
+                    <div><%=reply["reply"]%></div>
+                    <%posted[reply["reply"]] = true%>
+                  </div>
                 <%end%>
               <%end%>
           <%end%>
         <%end%>
       </div>
-      </div>
     </section>
   <%end%>
 </section>
-  <% else %>
-    <p>Please login to access this page</p>
-    <a href="/login">Log in</a>
-  <% end %>

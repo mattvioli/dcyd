@@ -9,20 +9,31 @@
 <body>
   <div class="container">
     <header class='header'>
-      <h1><a href='/'>dcyd</a></h1>
+      <div class='header_tag'>
+        <h1><a href='/'>dcyd</a></h1>
+        <p>Welcome to dcyd, where we help you decide on things.</p>
+      </div>
       <nav>
-      <% if is_logged_in? %>
-        Welcome, <%= current_user["user_name"]%>
-        <form action="/sessions" method="POST">
-          <input type="hidden" name="_method" value="DELETE" />
-          <input type="submit" value="Log Out" />
-        </form>
-        <a href='/posts'>View posts</a>
-        <a href='/create'>Create post</a>
-      <% else %>
-        <a href="/login">Log in</a>
-        <a href="/sign_up">Sign up</a>
-      <% end %>
+        <% if is_logged_in? %>
+          <div class="logged-nav">
+            <div>
+              <a href='/posts'><button>View posts</button></a>
+              <a href='/create'><button>Create post</button></a>
+            </div>
+            <div class="user_action">
+              Welcome, <%= current_user["user_name"]%>
+              <form action="/sessions" method="POST">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input class="button" type="submit" value="Log Out" />
+              </form>
+            </div>
+          </div>
+        <% else %>
+          <div class="unlogged-nav">
+            <a href="/login"><button>Log in</button></a>
+            <a href="/sign_up"><button>Sign up</button></a>
+          </div>
+        <% end %>
       </nav>
     </header>
       <%= yield %>
