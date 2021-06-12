@@ -1,3 +1,4 @@
+<% if is_logged_in?%>
   <form action="/create_post" method="POST">
     <label for="title">
       Title:
@@ -11,3 +12,7 @@
 
     <input type="submit" value="dcyd!" />
 </form>
+<% else %>
+  <p>Please login to access this page</p>
+  <a href="/login">Log in</a>
+<% end %>

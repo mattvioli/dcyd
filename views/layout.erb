@@ -25,12 +25,7 @@
       <% end %>
       </nav>
     </header>
-    <% if is_logged_in? %>
       <%= yield %>
-    <% else %>
-      <p>Please login to access this page</p>
-      <a href="/login">Log in</a>
-    <% end %>
   </div>
 </body>
 </html>

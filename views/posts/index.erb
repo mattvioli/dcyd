@@ -12,11 +12,13 @@
       </form>
     </div>
   <%end%>
-  <div class="replies"><button>yes</button><button>no</button></div>
-  <div class="answers">
-    <div class="answer">Yes X 2</div>
-    <div class="answer">No X 1</div>
+  <div class="replies">
+    <form action='/reply' method="POST">
+      <input type="text" name="reply" placeholder="What's your decision?">
+      <input type="sumbit" value="reply">
+    </form>
   </div>
+  <div class="answers"> </div>
   </div>
   </section>
   <%end%>
