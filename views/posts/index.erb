@@ -13,12 +13,14 @@
             </form>
           </div>
         <%end%>
+      <% if not_passed_time?(post["time_stamp"])%>
       <div class="replies">
         <form action="/reply/<%=post["id"]%>" method="POST">
           <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
           <input id="input_button" type="submit" value="reply" />
         </form>
       </div>
+      <% end %>
       <%end%>
       <div class="answers">
       <h3>Replies</h3>
