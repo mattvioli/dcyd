@@ -1,3 +1,5 @@
+DROP TABLE users, posts, answers IF EXISTS;
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY, 
   user_name TEXT, 
@@ -10,7 +12,7 @@ CREATE TABLE posts (
   title TEXT, 
   main_text TEXT,
   active BOOLEAN,
-  user_id INTEGER,
+  user_id INTEGER
 );
 
 CREATE TABLE answers (
@@ -18,4 +20,4 @@ CREATE TABLE answers (
   reply TEXT,
   user_id INTEGER,
   post_id INTEGER
-)
+);

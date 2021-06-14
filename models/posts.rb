@@ -1,5 +1,5 @@
 def posts_data
-  run_sql("SELECT * FROM posts")
+  run_sql("SELECT posts.*, users.user_name FROM posts LEFT JOIN users ON posts.user_id = users.id;")
 end
 # need to add inner join to user ID/username
 
