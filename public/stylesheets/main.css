@@ -32,7 +32,13 @@ button {
 }
 
 .button,
-#input_button,
+#input_button {
+  box-shadow: none;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--second-highlight-color);
+}
+
 #access_button {
   box-shadow: none;
   border-radius: 4px;
@@ -151,6 +157,7 @@ nav {
   border: 1px solid var(--main-border-color);
   background-color: #fcfcfb;
   margin: 10px 0;
+  width: 100%;
 }
 
 #access_button {
