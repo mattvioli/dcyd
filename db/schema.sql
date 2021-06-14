@@ -12,7 +12,8 @@ CREATE TABLE posts (
   title TEXT, 
   main_text TEXT,
   active BOOLEAN,
-  user_id INTEGER
+  user_id INTEGER,
+  time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE answers (
