@@ -12,7 +12,6 @@ post '/create_post' do
   title = params[:title]
   main_text = params[:main_text]
   user_id = session[:user_id]
-  time
   create_post(title, main_text, user_id)
 
   redirect '/posts'
