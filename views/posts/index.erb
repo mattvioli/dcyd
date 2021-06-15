@@ -13,40 +13,45 @@
             </form>
           </div>
         <%end%>
-      <% if not_passed_time?(post["time_stamp"])%>
-      <div class="replies">
+      <div class="user_reply">
         <form action="/reply/<%=post["id"]%>" method="POST">
           <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
           <input id="input_button" type="submit" value="reply" />
         </form>
       </div>
-      <% end %>
       <%end%>
       <div class="answers">
-      <h3>Replies</h3>
+        <h3>Replies</h3>
         <% counts = replies.each_with_object(Hash.new(0)) { |h1, h2| h2[h1["reply"]] += 1 }%>
         <% posted = {}%>
-        <%replies.each do |reply|%>
-          <%if reply["post_id"] == post["id"]%>
-            <% if posted[reply["reply"]]%>
-              <%nil%>
-              <%else%>
-                <%if counts[reply["reply"]] > 1%>
-                  <div class="reply">
-                    <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
-                    <div><%=reply["reply"]%></div>
-                    <%posted[reply["reply"]] = true%>
-                  </div>
+        <div id="replies">
+          <%replies.each do |reply|%>
+            <%if reply["post_id"] == post["id"]%>
+              <% if posted[reply["reply"]]%>
+                <%nil%>
                 <%else%>
-                  <div class="reply">
-                    <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
-                    <div><%=reply["reply"]%></div>
-                    <%posted[reply["reply"]] = true%>
-                  </div>
+                  <%if counts[reply["reply"]] > 1%>
+                      <div class="reply">
+                        <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
+                        <div><%=reply["reply"]%></div>
+                        <%posted[reply["reply"]] = true%>
+                        <form action="/quick_reply/<%=reply["id"]%>" method="POST">
+                        <input id="quick_reply_button" type="submit" value="Quick Vote" />
+                        </form>
+                      </div>
+                  <%else%>
+                    <div class="reply">
+                      <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
+                      <div><%=reply["reply"]%></div>
+                      <%posted[reply["reply"]] = true%>
+                      <form action="/quick_reply/<%=reply["id"]%>" method="POST">
+                      <input id="quick_reply_button" type="submit" value="Quick Vote" />
+                    </div>
+                  <%end%>
                 <%end%>
-              <%end%>
+            <%end%>
           <%end%>
-        <%end%>
+        </div>
       </div>
     </section>
   <%end%>
