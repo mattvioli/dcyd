@@ -12,12 +12,9 @@ post '/sign_up' do
   password = params[:password]
 
   #check username
-
-  #check email
-
-  #check password
-
-  if !email.match(URI::MailTo::EMAIL_REGEXP)
+  if username_taken?(user_name)
+    erb :'users/new', locals: { error_message: 'Username is taken.'}
+  elsif !email.match(URI::MailTo::EMAIL_REGEXP)
     erb :'users/new', locals: { error_message: 'That is not an email.'}
   elsif password.length < 6 
     erb :'users/new', locals: { error_message: 'Password needs to be 7 characters or longer.'}
