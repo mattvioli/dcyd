@@ -14,19 +14,13 @@
           </div>
         <%end%>
         <% if not_passed_time?(post["time_stamp"])%>
-        <div class="replies">
-          <form action="/reply/<%=post["id"]%>" method="POST">
-            <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
-            <input id="input_button" type="submit" value="reply" />
-          </form>
-        </div>
+          <div class="replies">
+            <form action="/reply/<%=post["id"]%>" method="POST">
+              <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
+              <input id="input_button" type="submit" value="reply" />
+            </form>
+          </div>
         <% end %>
-      <div class="user_reply">
-        <form action="/reply/<%=post["id"]%>" method="POST">
-          <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
-          <input id="input_button" type="submit" value="reply" />
-        </form>
-      </div>
       <%end%>
       <div class="answers">
         <h3>Replies</h3>
@@ -43,17 +37,22 @@
                         <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
                         <div><%=reply["reply"]%></div>
                         <%posted[reply["reply"]] = true%>
-                        <form action="/quick_reply/<%=reply["id"]%>" method="POST">
-                        <input id="quick_reply_button" type="submit" value="Quick Vote" />
-                        </form>
+                        <% if is_logged_in? %>
+                          <form action="/quick_reply/<%=reply["id"]%>" method="POST">
+                          <input id="quick_reply_button" type="submit" value="Quick Vote" />
+                          </form>
+                        <%end%>
                       </div>
                   <%else%>
                     <div class="reply">
                       <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
                       <div><%=reply["reply"]%></div>
                       <%posted[reply["reply"]] = true%>
-                      <form action="/quick_reply/<%=reply["id"]%>" method="POST">
-                      <input id="quick_reply_button" type="submit" value="Quick Vote" />
+                      <% if is_logged_in? %>
+                        <form action="/quick_reply/<%=reply["id"]%>" method="POST">
+                        <input id="quick_reply_button" type="submit" value="Quick Vote" />
+                        </form>
+                      <%end%>
                     </div>
                   <%end%>
                 <%end%>
