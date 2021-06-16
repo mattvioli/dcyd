@@ -16,6 +16,16 @@ def find_user(user_name)
   end
 end
 
+def username_taken?(user_name)
+  results = run_sql("SELECT * FROM users WHERE user_name = $1", [user_name])
+
+  if results.to_a.length > 0
+    return true
+  else
+    return false
+  end
+end
+
 def find_user_by_id(id)
 
   results = run_sql("SELECT * FROM users WHERE id = $1", [id])
