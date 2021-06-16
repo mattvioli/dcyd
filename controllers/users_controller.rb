@@ -1,5 +1,5 @@
 get '/sign_up' do
-  erb :'users/new'
+  erb :'users/new', locals: { error_message: ''}
 end
 
 get '/profile' do
@@ -11,9 +11,20 @@ post '/sign_up' do
   email = params[:email]
   password = params[:password]
 
-  create_user(user_name, email, password)
+  #check username
 
-  redirect '/'
+  #check email
+
+  #check password
+
+  if !email.match(URI::MailTo::EMAIL_REGEXP)
+    erb :'users/new', locals: { error_message: 'That is not an email.'}
+  elsif password.length < 6 
+    erb :'users/new', locals: { error_message: 'Password needs to be 7 characters or longer.'}
+  else
+    create_user(user_name, email, password)
+    redirect '/'
+  end
 end
 
 post '/update_profile' do
