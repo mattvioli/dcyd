@@ -176,19 +176,27 @@ nav {
   min-height: 100px;
 }
 
-
 .profile_image {
   width: 20px;
   height: 20px;
-
-.replies {
-  width: 40%;
+  margin: 0 5px 0 0;
+  border-radius: 50%;
 }
 
 #quick_reply_button {
-  width: 90%;
+  width: 20%;
   box-shadow: none;
   border-radius: 4px;
   border: none;
   background-color: var(--second-highlight-color);
+}
+
+.posted_by {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.post-delete {
+  width: 25%;
 }
