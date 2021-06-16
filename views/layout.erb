@@ -23,7 +23,7 @@
             </div>
             <div class="user_action">
               Welcome, <%= current_user["user_name"]%>
-              <a href='/profile'><button>Edit Profile</button></a>
+              <div><a href='/profile'><button>Edit Profile</button></a></div>
               <form action="/sessions" method="POST">
                 <input type="hidden" name="_method" value="DELETE" />
                 <input class="button" type="submit" value="Log Out" />
