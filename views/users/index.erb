@@ -1,0 +1,32 @@
+<section class="access">
+  <h2>Your profile!</h2>
+  <div class="form">
+    <form action="/update_profile" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="uploading_profile_picture">
+          <input type="file" name="image">
+          <input id="access_button" type="submit" value="Upload profile image" />
+        </label>
+      </div>
+    </form>
+
+    <form action="/update_email" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="email">
+          <input type="text" name="email" placeholder="Change email"/>
+          <input id="access_button" type="submit" value="Update password" />
+        </label>
+      </div>
+      </form>
+
+      <form action="/update_password" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="password">
+          <input type="password" name="password" placeholder="Change password"/>
+          <input id="access_button" type="submit" value="Update password" />
+
+        </label>
+      </div>
+      </form>
+  </div>
+</section>

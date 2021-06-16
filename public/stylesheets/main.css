@@ -176,6 +176,11 @@ nav {
   min-height: 100px;
 }
 
+
+.profile_image {
+  width: 20px;
+  height: 20px;
+
 .replies {
   width: 40%;
 }

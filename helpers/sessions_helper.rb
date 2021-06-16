@@ -13,5 +13,4 @@ def current_user
   else
     return nil
   end
-
 end
