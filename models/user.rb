@@ -26,3 +26,7 @@ def find_user_by_id(id)
     return nil
   end
 end
+
+def update_email(id, email)
+  run_sql("UPDATE users SET email = $2 WHERE id = $1", [id, email])
+end
