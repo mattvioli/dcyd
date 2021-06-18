@@ -1,0 +1,17 @@
+<section class="posts">
+  <div class="header_align"><h1>These are your posts</h1></div>
+    <%posts.each do |post| %>
+      <section class="single_post">
+        <h2><%=post['title']%></h2>
+        <div class="post-text"><%=post['main_text']%></div>
+            <div class="post-delete">
+              <form action="/<%=post["id"]%>" method="POST">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input id="input_button" type="submit" value="Delete" />
+              </form>
+            </div>
+      </section>
+    <%end%>
+</section>
+
+<%# to do: Add replies. make sure only the user can see it THEN add the proof system. %>

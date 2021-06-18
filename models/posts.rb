@@ -10,3 +10,7 @@ end
 def delete_post(id)
   run_sql("DELETE FROM posts WHERE id = $1;", [id])
 end
+
+def get_posts_by_id(id)
+  run_sql("SELECT * FROM posts WHERE user_id = $1 ORDER BY time_stamp DESC;", [id])
+end

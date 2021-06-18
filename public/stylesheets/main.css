@@ -200,3 +200,7 @@ nav {
 .post-delete {
   width: 25%;
 }
+
+.header_align {
+  text-align: center;
+}
