@@ -10,8 +10,36 @@
               <input id="input_button" type="submit" value="Delete" />
               </form>
             </div>
+              <div class="answers">
+        <h3>Replies</h3>
+        <% counts = replies.each_with_object(Hash.new(0)) { |h1, h2| h2[h1["reply"]] += 1 }%>
+        <% posted = {}%>
+        <div id="replies">
+          <%replies.each do |reply|%>
+            <%if reply["post_id"] == post["id"]%>
+              <% if posted[reply["reply"]]%>
+                <%nil%>
+                <%else%>
+                  <%if counts[reply["reply"]] > 1%>
+                      <div class="reply">
+                        <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
+                        <div><%=reply["reply"]%></div>
+                        <%posted[reply["reply"]] = true%>
+                      </div>
+                  <%else%>
+                    <div class="reply">
+                      <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
+                      <div><%=reply["reply"]%></div>
+                      <%posted[reply["reply"]] = true%>
+                    </div>
+                  <%end%>
+                <%end%>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
       </section>
     <%end%>
 </section>
 
-<%# to do: Add replies. make sure only the user can see it THEN add the proof system. %>
+<%# to do: make sure only the user can see it THEN add the proof system. %>
