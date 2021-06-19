@@ -207,5 +207,20 @@ nav {
 
 .proof img {
   max-width: 100%;
-  border: 1px solid var(--main-highlight-color);
+  display: none;
+}
+
+.proof-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#proof-svg {
+  padding: 10px;
+}
+
+.flip-horizontally {
+  transform: rotate(180deg);
+  transform-origin: center center;
 }
