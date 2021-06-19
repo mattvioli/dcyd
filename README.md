@@ -4,7 +4,7 @@ A decision making app.
 You can post a question, and other users vote on your questions.
 After you are happy with it, you can post an image of your decision.
 
-
+Hosted on Heroku here: https://dcyd.herokuapp.com/
 ## Technologies Used
 HTML, CSS, and JavaScript for the front end.
 Ruby and Sinatra for the back end.
