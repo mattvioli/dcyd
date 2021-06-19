@@ -55,7 +55,7 @@
       <section class="proof">
         <%if proof_exists?(post["id"]) %>
           <div class="proof-head"> <h3>Proof of decision</h3> <svg id="<%=post["id"]%>" class="proof-svg" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg> </div>
-          <img src=<%=proof_image_src(post["id"])%> />
+          <img class="proof-img" id="proof<%=post["id"]%>" src=<%=proof_image_src(post["id"])%> />
         <%end%>
       </section>
     </section>
