@@ -24,6 +24,8 @@ post '/sign_up' do
     erb :'users/new', locals: { error_message: 'Password needs to be 7 characters or longer.'}
   else
     create_user(user_name, email, password)
+    user = find_user(user_name)
+    session[:user_id] = user["id"]
     redirect '/'
   end
 end
