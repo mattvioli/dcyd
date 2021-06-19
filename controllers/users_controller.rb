@@ -3,7 +3,11 @@ get '/sign_up' do
 end
 
 get '/profile' do
+  if(!is_logged_in?)
+    redirect '/login'
+  else
   erb :'users/index'
+  end
 end
 
 post '/sign_up' do

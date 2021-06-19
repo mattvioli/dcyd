@@ -5,13 +5,21 @@ get '/posts' do
 end
 
 get '/posts/:id' do |id|
+  if(!is_logged_in?)
+    redirect '/login'
+  else
   post_results = get_posts_by_id(id)
   reply_results = get_reply_by_user_id(id)
   erb :"/posts/show", locals: { posts: post_results, replies: reply_results }
+  end
 end
 
 get '/create' do
+  if(!is_logged_in?)
+    redirect '/login'
+  else
   erb :'posts/new'
+  end
 end
 
 post '/create_post' do
