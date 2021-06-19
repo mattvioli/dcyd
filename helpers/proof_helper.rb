@@ -6,3 +6,7 @@ def proof_exists?(id)
     return false
   end
 end
+
+def proof_image_src(id)
+    return "/proof/#{id}proof"
+end

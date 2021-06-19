@@ -204,3 +204,8 @@ nav {
 .header_align {
   text-align: center;
 }
+
+.proof img {
+  max-width: 100%;
+  border: 1px solid var(--main-highlight-color);
+}
