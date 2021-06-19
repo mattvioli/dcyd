@@ -1,5 +1,6 @@
 def image_src(user_id)
-  if Dir.glob("/uploads/#{user_id}profile")
+  pn = Pathname.new("./public/uploads/#{user_id}profile")
+  if pn.exist?
     return "/uploads/#{user_id}profile"
   else
     return "/uploads/defaultprofile.png"

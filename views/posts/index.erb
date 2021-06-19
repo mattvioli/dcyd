@@ -52,6 +52,11 @@
           <%end%>
         </div>
       </div>
+      <section class="proof">
+        <%if proof_exists?(post["id"]) %>
+          <div> it exists</div>
+        <%end%>
+      </section>
     </section>
   <%end%>
 </section>
