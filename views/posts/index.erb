@@ -5,7 +5,7 @@
       <div class="posted_by"><img class="profile_image" src=<%=profile_image_src(post["user_id"])%> alt="profile picture"> <h3><%=post['user_name']%></h3> </div>
       <div class="post-text"><%=post['main_text']%></div>
       <% if is_logged_in?%>
-        <% if not_passed_time?(post["time_stamp"])%>
+        <% if not_passed_time?(post["time_stamp"]) && !proof_exists?(post["id"])%>
           <div class="replies">
             <form action="/reply/<%=post["id"]%>" method="POST">
               <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
@@ -29,7 +29,7 @@
                         <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
                         <div><%=reply["reply"]%></div>
                         <%posted[reply["reply"]] = true%>
-                        <% if is_logged_in? %>
+                        <% if is_logged_in? && !proof_exists?(post["id"])%>
                           <form action="/quick_reply/<%=reply["id"]%>" method="POST">
                           <input id="quick_reply_button" type="submit" value="Quick Vote" />
                           </form>
@@ -40,7 +40,7 @@
                       <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
                       <div><%=reply["reply"]%></div>
                       <%posted[reply["reply"]] = true%>
-                      <% if is_logged_in? %>
+                      <% if is_logged_in? && !proof_exists?(post["id"])%>
                         <form action="/quick_reply/<%=reply["id"]%>" method="POST">
                         <input id="quick_reply_button" type="submit" value="Quick Vote" />
                         </form>
