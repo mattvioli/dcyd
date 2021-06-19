@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>dcyd</title>
-  <link rel='stylesheet' href='./stylesheets/main.css'>
-  <script src='./javascripts/application.js'></script>
+  <link rel='stylesheet' href='/stylesheets/main.css'>
+  <script async src='./javascripts/application.js'></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -19,6 +19,7 @@
           <div class="logged-nav">
             <div>
               <a href='/posts'><button>View posts</button></a>
+              <a href='/posts/<%=session[:user_id]%>'><button>View your posts</button></a>
               <a href='/create'><button>Create post</button></a>
             </div>
             <div class="user_action">

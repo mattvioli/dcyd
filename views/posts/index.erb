@@ -2,18 +2,10 @@
   <%posts.each do |post| %>
     <section class="single_post">
       <h2><%=post['title']%></h2>
-      <div class="posted_by"><img class="profile_image" src=<%=image_src(post["user_id"])%> alt="profile picture"> <h3><%=post['user_name']%></h3> </div>
+      <div class="posted_by"><img class="profile_image" src=<%=profile_image_src(post["user_id"])%> alt="profile picture" /> <h3><%=post['user_name']%></h3> </div>
       <div class="post-text"><%=post['main_text']%></div>
       <% if is_logged_in?%>
-        <%if session["user_id"] == post["user_id"]%>
-          <div class="post-delete">
-            <form action="/<%=post["id"]%>" method="POST">
-            <input type="hidden" name="_method" value="DELETE" />
-            <input id="input_button" type="submit" value="Delete" />
-            </form>
-          </div>
-        <%end%>
-        <% if not_passed_time?(post["time_stamp"])%>
+        <% if not_passed_time?(post["time_stamp"]) && !proof_exists?(post["id"])%>
           <div class="replies">
             <form action="/reply/<%=post["id"]%>" method="POST">
               <textarea class="text_area" type="text" name="reply" placeholder="What's your decision?"></textarea>
@@ -37,7 +29,7 @@
                         <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
                         <div><%=reply["reply"]%></div>
                         <%posted[reply["reply"]] = true%>
-                        <% if is_logged_in? %>
+                        <% if is_logged_in? && !proof_exists?(post["id"])%>
                           <form action="/quick_reply/<%=reply["id"]%>" method="POST">
                           <input id="quick_reply_button" type="submit" value="Quick Vote" />
                           </form>
@@ -48,7 +40,7 @@
                       <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
                       <div><%=reply["reply"]%></div>
                       <%posted[reply["reply"]] = true%>
-                      <% if is_logged_in? %>
+                      <% if is_logged_in? && !proof_exists?(post["id"])%>
                         <form action="/quick_reply/<%=reply["id"]%>" method="POST">
                         <input id="quick_reply_button" type="submit" value="Quick Vote" />
                         </form>
@@ -60,6 +52,12 @@
           <%end%>
         </div>
       </div>
+      <section class="proof">
+        <%if proof_exists?(post["id"]) %>
+          <div class="proof-head"> <h3>Proof of decision</h3> <svg id="<%=post["id"]%>" class="proof-svg" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg> </div>
+          <img class="proof-img" id="proof<%=post["id"]%>" src=<%=proof_image_src(post["id"])%> />
+        <%end%>
+      </section>
     </section>
   <%end%>
 </section>

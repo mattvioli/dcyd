@@ -4,6 +4,12 @@ get '/posts' do
   erb :'posts/index', locals: { posts: post_results, replies: reply_results }
 end
 
+get '/posts/:id' do |id|
+  post_results = get_posts_by_id(id)
+  reply_results = get_reply_by_user_id(id)
+  erb :"/posts/show", locals: { posts: post_results, replies: reply_results }
+end
+
 get '/create' do
   erb :'posts/new'
 end

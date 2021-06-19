@@ -200,3 +200,27 @@ nav {
 .post-delete {
   width: 25%;
 }
+
+.header_align {
+  text-align: center;
+}
+
+.proof img {
+  max-width: 100%;
+  display: none;
+}
+
+.proof-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#proof-svg {
+  padding: 10px;
+}
+
+.flip-horizontally {
+  transform: rotate(180deg);
+  transform-origin: center center;
+}

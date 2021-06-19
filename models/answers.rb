@@ -9,3 +9,7 @@ end
 def get_reply_from_id(reply_id)
   run_sql("SELECT * FROM answers WHERE id = $1", [reply_id])
 end
+
+def get_reply_by_user_id(id)
+  run_sql("SELECT * FROM answers WHERE user_id = $1", [id])
+end

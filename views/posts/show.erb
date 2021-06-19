@@ -1,0 +1,54 @@
+<section class="posts">
+  <div class="header_align"><h1>These are your posts</h1></div>
+    <%posts.each do |post| %>
+      <section class="single_post">
+        <h2><%=post['title']%></h2>
+        <div class="post-text"><%=post['main_text']%></div>
+            <div class="post-delete">
+              <form action="/<%=post["id"]%>" method="POST">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input id="input_button" type="submit" value="Delete" />
+              </form>
+            </div>
+              <div class="answers">
+        <h3>Replies</h3>
+        <% counts = replies.each_with_object(Hash.new(0)) { |h1, h2| h2[h1["reply"]] += 1 }%>
+        <% posted = {}%>
+        <div id="replies">
+          <%replies.each do |reply|%>
+            <%if reply["post_id"] == post["id"]%>
+              <% if posted[reply["reply"]]%>
+                <%nil%>
+                <%else%>
+                  <%if counts[reply["reply"]] > 1%>
+                      <div class="reply">
+                        <p class="reply_username"><em><%=counts[reply["reply"]]%> people replied:</em></p>
+                        <div><%=reply["reply"]%></div>
+                        <%posted[reply["reply"]] = true%>
+                      </div>
+                  <%else%>
+                    <div class="reply">
+                      <p class="reply_username"><em><%=reply["user_name"]%> replied:</em></p>
+                      <div><%=reply["reply"]%></div>
+                      <%posted[reply["reply"]] = true%>
+                    </div>
+                  <%end%>
+                <%end%>
+            <%end%>
+          <%end%>
+                  <form action="/upload_proof" method="POST" enctype="multipart/form-data">
+                    <div>
+                      <label for="uploading_proof">
+                        <input type="hidden" name="post_id" value=<%=post["id"]%> />
+                        <input type="file" name="image">
+                        <input id="access_button" type="submit" value="Upload profile image" />
+                      </label>
+                    </div>
+                  </form>
+        </div>
+      </div>
+      </section>
+    <%end%>
+</section>
+
+<%# to do: if the proof exists show it in the posts.%>
