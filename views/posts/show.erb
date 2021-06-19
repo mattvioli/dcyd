@@ -36,10 +36,19 @@
                 <%end%>
             <%end%>
           <%end%>
+                  <form action="/upload_proof" method="POST" enctype="multipart/form-data">
+                    <div>
+                      <label for="uploading_proof">
+                        <input type="hidden" name="post_id" value=<%=post["id"]%> />
+                        <input type="file" name="image">
+                        <input id="access_button" type="submit" value="Upload profile image" />
+                      </label>
+                    </div>
+                  </form>
         </div>
       </div>
       </section>
     <%end%>
 </section>
 
-<%# to do: make sure only the user can see it THEN add the proof system. %>
+<%# to do: add form to upload the post.%>

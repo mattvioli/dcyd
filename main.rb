@@ -15,6 +15,8 @@ require_relative 'controllers/users_controller'
 require_relative 'controllers/sessions_controller'
 require_relative 'controllers/posts_controller'
 require_relative 'controllers/answers_controller'
+require_relative 'controllers/proof_controller'
+
 
 
 get '/' do
